@@ -17,12 +17,14 @@ public class Main {
         while (true) {
             System.out.println("[ MOMS TOUCH MENU ]");
             int count = 1;
+            // list에 있는 값을 반복문으로 가져와 출력, 문자열의 길이를 맞추기 위해 문자열 포맷팅 사용
             for (MenuItem menu :menuItems) {
                 System.out.printf("%d. %-20s | W %.1f | %s\n",count,menu.name, menu.price,menu.text);
                 count++;
             }
             System.out.println("0. 종료     | 종료 ");
             int n = sc.nextInt();
+            // 입력 값에 따른 결과 처리
             if (n == 0) {
                 System.out.println("프로그램을 종료합니다.");
                 break;
