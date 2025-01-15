@@ -28,7 +28,7 @@ public class Main {
             if (n == 0) {
                 System.out.println("프로그램을 종료합니다.");
                 break;
-            } else if (n > menuItems.size()) {
+            } else if (n > menuItems.size() || n < 0) {
                 System.out.println("잘못된 번호를 입력했습니다.");
             } else {
                 System.out.printf("선택한 메뉴 : %s | W %.1f | %s\n",menuItems.get(n-1).name, menuItems.get(n-1).price, menuItems.get(n-1).text);

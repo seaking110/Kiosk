@@ -44,7 +44,7 @@ public class Kiosk {
                     if (m == 0) {
                         System.out.println();
                         continue;
-                    } else if (m > menuList.get(n-1).menuItems.size()) {
+                    } else if (m > menuList.get(n-1).menuItems.size() || m < 0) {
                         System.out.println("잘못된 번호를 입력했습니다.");
                     } else {
                         System.out.printf("선택한 메뉴 : %s | W %.1f | %s\n",
