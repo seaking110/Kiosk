@@ -19,10 +19,10 @@ public class Kiosk {
     public List<Menu> getMenuList() {
         return menuList;
     }
-    public Menu getMenuList(int index) {
+    public Menu getOneMenu(int index) {
         return menuList.get(index);
     }
-    public void start(){
+    public void start() {
         Scanner sc = new Scanner(System.in);
         while (true) {
             // 카테고리를 보여주는 메인 메뉴 출력
@@ -44,18 +44,18 @@ public class Kiosk {
                     // 선택한 상위 카테고리 메뉴의 세부 메뉴 출력
                     // 캡슐화 진행 전 레벨이기 때문에 단순하게 다른 클래스의 필드에 직접 접근
                     System.out.println();
-                    System.out.println("[ "+ getMenuList(n-1).getCategory()+" ]");
-                    getMenuList(n-1).printMenuItems();
+                    System.out.println("[ "+ getOneMenu(n-1).getCategory()+" ]");
+                    getOneMenu(n-1).printMenuItems();
                     System.out.println("0. 뒤로가기");
                     int m = sc.nextInt();
                     if (m == 0) {
                         System.out.println();
                         continue;
-                    } else if (m > getMenuList(n-1).getMenuItems().size()) {
+                    } else if (m > getOneMenu(n-1).getMenuItems().size()) {
                         System.out.println("잘못된 번호를 입력했습니다.");
                     } else {
                         System.out.printf("선택한 메뉴 : %s | W %.1f | %s\n",
-                                getMenuList(n-1).getMenuItems(m-1).getName(), getMenuList(n-1).getMenuItems(m-1).getPrice(), getMenuList(n-1).getMenuItems(m-1).getText());
+                                getOneMenu(n-1).getMenuItem(m-1).getName(), getOneMenu(n-1).getMenuItem(m-1).getPrice(), getOneMenu(n-1).getMenuItem(m-1).getText());
                     }
                 }
             } catch (InputMismatchException e) {

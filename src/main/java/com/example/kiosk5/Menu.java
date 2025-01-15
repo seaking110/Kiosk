@@ -23,7 +23,7 @@ public class Menu {
         return menuItems;
     }
 
-    public MenuItem getMenuItems(int index) {
+    public MenuItem getMenuItem(int index) {
         return menuItems.get(index);
     }
 
