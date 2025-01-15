@@ -22,7 +22,7 @@ public class Menu {
     public void printMenuItems() {
         int count = 1;
         for (MenuItem item : menuItems) {
-            System.out.printf("%d. %-20s | W %.1f | %s\n",count,item.name, item.price, item.text);
+            System.out.printf("%d. %-20s | W %.1f | %s\n", count, item.name, item.price, item.text);
             count++;
         }
     }

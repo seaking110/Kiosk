@@ -47,7 +47,8 @@ public class Kiosk {
                     } else if (m > menuList.get(n-1).menuItems.size()) {
                         System.out.println("잘못된 번호를 입력했습니다.");
                     } else {
-                        System.out.printf("선택한 메뉴 : %s | W %.1f | %s\n",menuList.get(n-1).menuItems.get(m-1).name, menuList.get(n-1).menuItems.get(m-1).price,menuList.get(n-1).menuItems.get(m-1).text);
+                        System.out.printf("선택한 메뉴 : %s | W %.1f | %s\n",
+                                menuList.get(n-1).menuItems.get(m-1).name, menuList.get(n-1).menuItems.get(m-1).price, menuList.get(n-1).menuItems.get(m-1).text);
                     }
                 }
             } catch (InputMismatchException e) {

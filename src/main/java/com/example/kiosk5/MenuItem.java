@@ -20,7 +20,6 @@ public class MenuItem {
     public double getPrice() {
         return price;
     }
-
     public String getText() {
         return text;
     }

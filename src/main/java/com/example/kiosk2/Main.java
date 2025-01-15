@@ -19,7 +19,7 @@ public class Main {
             int count = 1;
             // list에 있는 값을 반복문으로 가져와 출력, 문자열의 길이를 맞추기 위해 문자열 포맷팅 사용
             for (MenuItem menu :menuItems) {
-                System.out.printf("%d. %-20s | W %.1f | %s\n",count,menu.name, menu.price,menu.text);
+                System.out.printf("%d. %-20s | W %.1f | %s\n", count, menu.name, menu.price, menu.text);
                 count++;
             }
             System.out.println("0. 종료     | 종료 ");
@@ -31,7 +31,7 @@ public class Main {
             } else if (n > menuItems.size()) {
                 System.out.println("잘못된 번호를 입력했습니다.");
             } else {
-                System.out.printf("선택한 메뉴 : %s | W %.1f | %s\n",menuItems.get(n-1).name, menuItems.get(n-1).price,menuItems.get(n-1).text);
+                System.out.printf("선택한 메뉴 : %s | W %.1f | %s\n",menuItems.get(n-1).name, menuItems.get(n-1).price, menuItems.get(n-1).text);
             }
         }
     }
