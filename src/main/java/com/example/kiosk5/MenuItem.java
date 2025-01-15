@@ -2,9 +2,9 @@ package com.example.kiosk5;
 
 public class MenuItem {
     //필드
-    String name;
-    double price;
-    String text;
+    private final String name;
+    private final double price;
+    private final String text;
 
     //생성자
     public MenuItem(String name, double price, String text) {

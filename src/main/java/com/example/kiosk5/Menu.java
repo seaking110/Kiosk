@@ -15,7 +15,7 @@ public class Menu {
 
 
     // 메서드
-    public void addMenuItems(MenuItem item){
+    public void addMenuItem(MenuItem item){
         menuItems.add(item);
     }
 
