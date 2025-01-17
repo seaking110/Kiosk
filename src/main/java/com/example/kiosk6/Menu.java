@@ -23,6 +23,7 @@ public class Menu {
         return menuItems;
     }
 
+    // 하나의 메뉴만 리턴하는 메서드
     public MenuItem getMenuItem(int index) {
         return menuItems.get(index);
     }
@@ -30,6 +31,8 @@ public class Menu {
     public String getCategory() {
         return category;
     }
+
+    // 메뉴 리스트를 출력하는 메서드
     public void printMenuItems() {
         int count = 1;
         for (MenuItem item : getMenuItems()) {
