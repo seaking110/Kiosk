@@ -38,68 +38,16 @@ public class Kiosk {
             } else if (n > max || n < 0) {
                 System.out.println("잘못된 번호를 입력했습니다.");
             } else if (n == getMenuList().size() + 1) {
+                // 장바구니
                 System.out.println("\n아래와 같이 주문 하시겠습니까?\n");
-                while (true) {
-                    System.out.println("[ Orders ]");
-                    // 장바구니 출력 파트
-                    basket.printBasketItem();
-                    System.out.println("\n[ Total ]");
-                    System.out.println("W " + basket.totalPrice() + "\n");
-                    System.out.println("1. 주문  2. 메뉴 수정  3. 메뉴판");
-                    int num = input(sc);
-                    if (num == 1) {
-                        int discountPercent = getUserDiscount(sc);
-                        double finalPrice = calculate(basket.totalPrice(), discountPercent);
-                        System.out.println("\n주문이 완료되었습니다. 금액은 W " + finalPrice + "입니다.\n");
-                        basket.resetBasket();
-                        break;
-                    } else if (num == 2) {
-                        // 장바구니에 특정 부분 삭제 파트
-                        System.out.println("삭제하실 메뉴의 번호를 눌러주세요.");
-                        basket.printBasketItemAndCount();
-                        System.out.println("0. 뒤로가기");
-                        int deleteNum = input(sc);
-                        if (basket.getBasketList().size() < deleteNum || deleteNum < 0) {
-                            System.out.println("잘못된 번호를 입력했습니다.\n");
-                        } else if (deleteNum == 0) {
-                            break;
-                        } else {
-                            basket.removeBasket(deleteNum);
-                            break;
-                        }
-                    } else if (num == 3) {
-                        break;
-                    } else {
-                        System.out.println("잘못된 번호를 입력했습니다.\n");
-                    }
-                }
+                handleBasket(sc, basket);
             } else if (n == getMenuList().size() + 2) {
+                // 장바구니 삭제
                 basket.resetBasket();
                 System.out.println("\n진행 중인 주문을 취소했습니다.");
             } else {
                 // 상세 메뉴 출력 파트
-                while (true) {
-                    Menu menu = getOneMenu(n - 1);
-                    printDetailMenu(menu);
-                    int m = input(sc);
-                    if (m == 0) {
-                        System.out.println();
-                        break;
-                    } else if (m > menu.getMenuItems().size() || m < 0) {
-                        System.out.println("잘못된 번호를 입력했습니다.\n");
-                    } else {
-                        MenuItem menuItem = menu.getMenuItem(m - 1);
-                        System.out.printf("선택한 메뉴 : %s | W %.1f | %s\n",
-                                menuItem.getName(),
-                                menuItem.getPrice(),
-                                menuItem.getText());
-                        boolean flag = askToAddToBasket(sc, menuItem, basket);
-                        if (flag) {
-                            break;
-                        }
-                    }
-
-                }
+                processDetailMenu (sc, n , basket);
             }
         }
     }
@@ -127,6 +75,31 @@ public class Kiosk {
         System.out.println("0. 뒤로가기");
     }
 
+    // 세부화면 처리 메서드
+    private void processDetailMenu(Scanner sc, int n, Basket basket) {
+        while (true) {
+            Menu menu = getOneMenu(n - 1);
+            printDetailMenu(menu);
+            int m = input(sc);
+            if (m == 0) {
+                System.out.println();
+                break;
+            } else if (m > menu.getMenuItems().size() || m < 0) {
+                System.out.println("잘못된 번호를 입력했습니다.\n");
+            } else {
+                MenuItem menuItem = menu.getMenuItem(m - 1);
+                System.out.printf("선택한 메뉴 : %s | W %.1f | %s\n",
+                        menuItem.getName(),
+                        menuItem.getPrice(),
+                        menuItem.getText());
+                boolean flag = askToAddToBasket(sc, menuItem, basket);
+                if (flag) {
+                    break;
+                }
+            }
+        }
+    }
+
     // 사용자의 입력을 받는 메서드
     public int input(Scanner sc) {
         int n = -1;
@@ -139,6 +112,44 @@ public class Kiosk {
                 continue;
             }
             return n;
+        }
+    }
+
+    // 장바구니 처리 메서드
+    public void handleBasket(Scanner sc, Basket basket) {
+        while (true) {
+            System.out.println("[ Orders ]");
+            // 장바구니 출력 파트
+            basket.printBasketItem();
+            System.out.println("\n[ Total ]");
+            System.out.println("W " + basket.totalPrice() + "\n");
+            System.out.println("1. 주문  2. 메뉴 수정  3. 메뉴판");
+            int num = input(sc);
+            if (num == 1) {
+                int discountPercent = getUserDiscount(sc);
+                double finalPrice = calculate(basket.totalPrice(), discountPercent);
+                System.out.println("\n주문이 완료되었습니다. 금액은 W " + finalPrice + "입니다.\n");
+                basket.resetBasket();
+                break;
+            } else if (num == 2) {
+                // 장바구니에 특정 부분 삭제 파트
+                System.out.println("삭제하실 메뉴의 번호를 눌러주세요.");
+                basket.printBasketItemAndCount();
+                System.out.println("0. 뒤로가기");
+                int deleteNum = input(sc);
+                if (basket.getBasketList().size() < deleteNum || deleteNum < 0) {
+                    System.out.println("잘못된 번호를 입력했습니다.\n");
+                } else if (deleteNum == 0) {
+                    break;
+                } else {
+                    basket.removeBasket(deleteNum);
+                    break;
+                }
+            } else if (num == 3) {
+                break;
+            } else {
+                System.out.println("잘못된 번호를 입력했습니다.\n");
+            }
         }
     }
     // 장바구니 추가 여부를 묻는 메서드
