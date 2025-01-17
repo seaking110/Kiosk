@@ -126,6 +126,8 @@ public double totalPrice() {
 
    [ Total ]
    W 4.9
+
+   1. 주문  2. 메뉴 수정  3. 메뉴판
    
    할인 정보를 입력해주세요:
    1. 국가유공자: 10%
