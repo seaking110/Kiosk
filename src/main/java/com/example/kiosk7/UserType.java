@@ -6,7 +6,9 @@ public enum UserType {
     STUDENT(3, 3),
     GENERAL(0, 4);
     private final int discount;
+
     private final int code;
+
     UserType(int discount, int code) {
         this.discount = discount;
         this.code = code;

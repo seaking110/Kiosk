@@ -8,7 +8,6 @@ public class Basket {
     private final List<BasketItem> basketList = new ArrayList<>();
 
     // 메서드
-
     // 장바구니 리스트에 하나의 메뉴를 추가하는 메서드
     public void addBasket(BasketItem item){
         getBasketList().add(item);
@@ -36,6 +35,7 @@ public class Basket {
         getBasketList().clear(); // 원본 리스트를 비움
         getBasketList().addAll(updatedList); // 새 리스트를 추가
     }
+
     // 장바구니를 출력하는 메서드
     public void printBasketItem() {
         for (BasketItem item : getBasketList()) {
